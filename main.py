@@ -3,8 +3,6 @@ from pydantic import BaseModel
 from typing import List, Optional
 from datetime import date
 
-
-
 app = FastAPI()
 
 
@@ -35,10 +33,6 @@ async def read_user(user_id: int):
         if db_user.id == user_id:
             return db_user
         raise HTTPException(status_code=404, detail="User not found")
-
-
-
-
 
     user = next((user for user in db_users if user.id == user_id), None)
     if user is None:
@@ -74,9 +68,5 @@ async def delete_user(user_id: int):
     deleted_user = db_users.pop(db_user_index)
     return deleted_user
 
-new_user = User(id=5, username="Vladislav K.", wallet=340.34,  birthdate=date(1995, 5, 15) )
 
-
-# asyncio.run(create_user(new_user))
-
-# asyncio.run(delete_user(4))
+new_user = User(id=5, username="Vladislav K.", wallet=340.34, birthdate=date(1995, 5, 15))
