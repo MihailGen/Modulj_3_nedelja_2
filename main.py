@@ -34,11 +34,6 @@ async def read_user(user_id: int):
             return db_user
         raise HTTPException(status_code=404, detail="User not found")
 
-    user = next((user for user in db_users if user.id == user_id), None)
-    if user is None:
-        raise HTTPException(status_code=404, detail="User not found")
-    return user
-
 
 # Создание нового пользователя
 @app.post("/users/", response_model=User)
